@@ -1,0 +1,17 @@
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Emulator config file set to C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] DiagnosticsStoreRootPath set to: C:\Users\PC\AppData\Local\dftmp\Resources\5a83e4d0-debb-49a0-86a6-63ac55d6dddb
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Loading config file: C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Config file to read: C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Emulator config file set to C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:34:34 PM] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:35:45 PM] DiagnosticsPlugin launched successfully with new configuration
+DiagnosticsPluginLauncher.exe Information: 0 : [5/17/2024 2:35:45 PM] DiagnosticPlugin exited with code 0
