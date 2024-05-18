@@ -24,14 +24,14 @@
     <Property name="SetConfiguration" value="Configuration=Debug" />
     <Property name="SetPlatform" value="Platform=AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5.1" />
-    <Property name="OutputDir" value="C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\CloudService\obj\Debug\RedditService_WebRole\" />
+    <Property name="OutputDir" value="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\obj\Debug\RedditService_WebRole\" />
     <Property name="EntryPoint" value="RedditService_WebRole.dll" />
-    <Property name="SourceDir" value="C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\RedditService_WebRole\" />
-    <Property name="SitePhysicalPath" value="C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\RedditService_WebRole\" />
+    <Property name="SourceDir" value="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\RedditService_WebRole\" />
+    <Property name="SitePhysicalPath" value="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\RedditService_WebRole\" />
     <Property name="TargetRuntimeVersion" value="v4.0" />
   </Properties>
   <Sites>
-    <Site name="Web" physicalDirectory="C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\RedditService_WebRole\">
+    <Site name="Web" physicalDirectory="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\RedditService_WebRole\">
       <Bindings>
         <Binding name="Endpoint1" endpointName="Endpoint1" />
       </Bindings>

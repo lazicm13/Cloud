@@ -20,3 +20,16 @@ C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\UserService_Data\obj\Debug\User
 C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\UserService_Data\obj\Debug\UserService_Data.csproj.CopyComplete
 C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\UserService_Data\obj\Debug\UserService_Data.dll
 C:\Users\PC\Desktop\Projekat Cloud-Reddit\Reddit\UserService_Data\obj\Debug\UserService_Data.pdb
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\UserService_Data.dll
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\UserService_Data.pdb
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\Microsoft.Data.Edm.dll
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\Microsoft.Data.Services.Client.dll
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\Microsoft.Data.OData.dll
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\bin\Debug\Microsoft.WindowsAzure.Configuration.xml
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\obj\Debug\UserService_Data.csprojAssemblyReference.cache
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\obj\Debug\UserService_Data.csproj.CoreCompileInputs.cache
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\obj\Debug\UserService_Data.csproj.CopyComplete
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\obj\Debug\UserService_Data.dll
+C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\UserService_Data\obj\Debug\UserService_Data.pdb

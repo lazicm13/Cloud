@@ -1,8 +1,7 @@
 ﻿@model UserService_Data.User
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "User Page";
 }
-
 
 <!DOCTYPE html>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -11,16 +10,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="~/Content/styleRegister.css">
+    <title>User Page</title>
+    <link rel="stylesheet" href="~/Content/styleUserPage.css">
 </head>
 <body>
     <div class="container">
-        @using (Html.BeginForm("Create", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Update", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.ValidationSummary(true)
             <fieldset>
-                <legend>Register</legend>
+                <legend>Update User Data</legend>
                 <div class="editor-label">
                     @Html.LabelFor(model => model.Ime)
                 </div>
@@ -64,7 +63,7 @@
                     @Html.EditorFor(model => model.Email) @Html.ValidationMessageFor(model => model.Email)
                 </div>
                 <div class="editor-label">
-                    @Html.LabelFor(model => model.Password)
+                    @Html.Label("New Password")
                 </div>
                 <div class="editor-field">
                     @Html.EditorFor(model => model.Password) @Html.ValidationMessageFor(model => model.Password)
@@ -76,7 +75,7 @@
                     <input type="file" id="profilePicture" name="file" />
                 </div>
                 <p>
-                    <input type="submit" value="Register" />
+                    <input type="submit" value="Save Changes" />
                 </p>
             </fieldset>
         }
@@ -88,8 +87,5 @@
             }
         </script>
     </div>
-
-
 </body>
 </html>
-
