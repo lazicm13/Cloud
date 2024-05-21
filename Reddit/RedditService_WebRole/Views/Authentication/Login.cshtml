@@ -13,14 +13,51 @@
 <body>
     <div class="container">
         <h2>Login to Reddit</h2>
-        <form action="/login" method="post">
-            <input type="text" name="username" placeholder="Username" required><br>
-            <input type="password" name="password" placeholder="Password" required><br>
+        <form action="~/Authentication/Authenticate" method="post" id="loginForm">
+            <input type="text" name="email" placeholder="Email" id="email" required><br>
+            <input type="password" name="password" placeholder="Password" id="password" required><br>
             <input type="submit" value="Login">
         </form>
         <div class="register-link">
             Don't have an account? <p>@Html.ActionLink("Register here", "Register")</p>.
         </div>
     </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/Authentication/Authenticate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const token = response.headers.get('Authorization').split(' ')[1];
+                    localStorage.setItem('token', token);
+                    // Opciono: preusmeri korisnika na drugu stranicu
+                    window.location.href = '/Home/Index';
+                } else {
+                    console.error('Error: ' + data.error);
+                }
+            } catch (error) {
+                console.error('There was an error:', error);
+            }
+        });
+
+    </script>
+
 </body>
 </html>

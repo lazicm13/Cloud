@@ -14,6 +14,7 @@ namespace RedditService_WebRole.Controllers
 {
     public class AuthenticationController : Controller
     {
+        TokenService tokenService = new TokenService();
         UserDataRepository repo = new UserDataRepository();
 
         public ActionResult Register()
@@ -84,5 +85,40 @@ namespace RedditService_WebRole.Controllers
                 return View("Register");
             }
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Authenticate(string Email, string Password)
+        {
+            try
+            {
+                // Provera da li korisnik postoji u bazi
+                 User user = repo.RetrieveAllUsers().Where(s => s.RowKey == Email).FirstOrDefault();
+                if (user == null)
+                {
+                    return Json(new { error = "User not found" });
+                }
+
+                // Provera da li je uneta lozinka ispravna
+                if (user.Password != Password)
+                {
+                    return Json(new { error = "Invalid password" });
+                }
+
+                // Generisanje JWT tokena
+                string token = tokenService.GenerateJwtToken(user);
+
+                Response.Headers.Add("Authorization", "Bearer " + token);
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message });
+            }
+        }
+
+
+
     }
 }

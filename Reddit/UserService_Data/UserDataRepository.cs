@@ -1,11 +1,16 @@
 ﻿using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
+using System.Configuration;
 
 namespace UserService_Data
 {
@@ -40,6 +45,14 @@ namespace UserService_Data
         }
 
 
+        public void UpdateUser(User user)
+        {
+            TableOperation updateOperation = TableOperation.Replace(user);
+            _table.Execute(updateOperation);
+        }
+        
+
        
+
     }
 }
