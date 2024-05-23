@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using UserService_Data;
@@ -16,9 +17,10 @@ namespace RedditService_WebRole.Controllers
 {
     public class HomeController : Controller
     {
+        UserDataRepository repo = new UserDataRepository();
         TokenService tokenservice = new TokenService();
         static string clientToken;
-        static string username;
+        public static string username;
 
         [HttpPost]
         public ActionResult SaveToken(string token)
@@ -38,8 +40,11 @@ namespace RedditService_WebRole.Controllers
         public ActionResult Index()
         {
             ViewBag.Username = username;
+            User user = repo.RetrieveAllUsers().Where(s => s.Ime == username).FirstOrDefault();
+            TempData["User"] = user;
             Debug.WriteLine("ViewBag username:" + username);
-            return View();
+            //Thread.Sleep(1000);
+            return RedirectToAction("UserPage", "User");
         }
 
         

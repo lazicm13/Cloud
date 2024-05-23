@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CloudService" generation="1" functional="0" release="0" Id="0c665c20-72c8-421d-91a3-3c7984d53313" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CloudService" generation="1" functional="0" release="0" Id="9173a036-87fa-49b4-95d0-cacca269cb40" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="CloudServiceGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -52,7 +52,7 @@
       </maps>
       <components>
         <groupHascomponents>
-          <role name="RedditService_WebRole" generation="1" functional="0" release="0" software="C:\Users\HP EliteBook 840-G2\Desktop\Projekat3\Cloud-main\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
+          <role name="RedditService_WebRole" generation="1" functional="0" release="0" software="C:\Users\HP EliteBook 840-G2\Desktop\Cloud-main (1)\Cloud-main\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
             <componentports>
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
@@ -81,9 +81,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="19889ee8-26ec-4ae2-8fc3-8fe0ab652e08" ref="Microsoft.RedDog.Contract\ServiceContract\CloudServiceContract@ServiceDefinition">
+    <implementation Id="d740778d-fccd-495e-a591-1531c63cbfa1" ref="Microsoft.RedDog.Contract\ServiceContract\CloudServiceContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="d1c8e707-4a31-47d8-b02c-cd1ef0da218d" ref="Microsoft.RedDog.Contract\Interface\RedditService_WebRole:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="d11ecfec-7167-44ae-89e6-67fefd4fb1e7" ref="Microsoft.RedDog.Contract\Interface\RedditService_WebRole:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/CloudService/CloudServiceGroup/RedditService_WebRole:Endpoint1" />
           </inPort>

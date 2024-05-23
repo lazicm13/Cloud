@@ -1,0 +1,96 @@
+﻿/* profile.css */
+
+/* Profile Container */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f6f7f8;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+}
+
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.profile-header h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+
+.edit-button {
+    position: absolute; /* Position the button */
+    top: 0; /* Align the button to the top */
+    right: 0; /* Align the button to the right */
+    padding: 8px 15px; /* Adjust padding */
+    background-color: #7aa5d9; /* Soft blue color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profile-header p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Profile Details */
+.profile-details {
+    margin-top: 30px;
+}
+
+    .profile-details h2 {
+        font-size: 20px;
+        color: #000;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    .profile-details p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+/* Profile Activity */
+.profile-activity {
+    margin-top: 30px;
+}
+
+    .profile-activity h2 {
+        font-size: 20px;
+        color: #000;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    .profile-activity h3 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .profile-activity ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .profile-activity ul li {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 5px;
+        }

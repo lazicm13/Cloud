@@ -164,6 +164,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\homepage.css" />
+    <Content Include="Content\profile.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styleRegister.css" />
     <Content Include="favicon.ico" />
@@ -199,7 +200,7 @@
     <Content Include="Views\User\UserPage.cshtml" />
     <Content Include="Views\Authentication\Login.cshtml" />
     <Content Include="Views\User\UpdateUser.cshtml" />
-    <Content Include="Views\User\Profile.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

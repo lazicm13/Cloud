@@ -1,22 +1,57 @@
 ﻿@model UserService_Data.User
 @{
     ViewBag.Title = "User Page";
+    var user = ViewBag.User as UserService_Data.User;
+
 }
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Page</title>
     <link rel="stylesheet" href="~/Content/homepage.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        function sendDataToBackend() {  
+            window.location.href = 'UserProfile';
+        }
+
+
+
+        function loginNavigate() {
+            window.location.href = '../Authentication/login';
+        }
+    
+        $(document).ready(function() {
+    
+    function updateUI(isAuthenticated) {
+        if (isAuthenticated) {
+            $('.auth-container').html('<button onclick="sendDataToBackend()">Profile</button>');
+        } else {
+            $('.auth-container').html('<button onclick="loginNavigate()">Login</button>');
+        }
+    }
+
+    
+    var isAuthenticated = @Html.Raw(Json.Encode(ViewBag.IsAuthenticated));
+    updateUI(isAuthenticated);
+});
+    
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="button-container">
             <button class="add-topic">Add New Topic</button>
-            <div>
-                <a href="@Url.Action("Login", "Authentication")" class="profile">Login</a>
-            </div>
+          
+               
+                <div class="auth-container">
+                    
+                </div>
+            
         </div>
         <ul class="topics">
             <li>Topic 1</li>
@@ -25,6 +60,7 @@
             <li>Topic 4</li>
         </ul>
     </div>
+
+    
 </body>
 </html>
-

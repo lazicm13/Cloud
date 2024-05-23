@@ -33,14 +33,14 @@ namespace UserService_Data
             new Claim(ClaimTypes.Name, user.Ime),
             new Claim(ClaimTypes.Email, user.Email),
             
-           // Dodajte dodatne zahteve prema potrebama vaše aplikacije
+           
             };
 
             var token = new JwtSecurityToken(
                 issuer: "your_app",
                 audience: "your_client",
                 claims: claims,
-                expires: DateTime.Now.AddHours(1), // Vreme isteka tokena
+                expires: DateTime.Now.AddHours(1), 
                 signingCredentials: credentials
             );
 
@@ -50,6 +50,12 @@ namespace UserService_Data
 
         public bool ValidateToken(string token)
         {
+            if (token == null)
+            {
+                // Handle case where token is null
+                return false;
+            }
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_securityKey);
 

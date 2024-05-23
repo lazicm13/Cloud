@@ -48,6 +48,9 @@
                     const token = response.headers.get('Authorization').split(' ')[1];
                     localStorage.setItem('token', token);
                     // Opciono: preusmeri korisnika na drugu stranicu
+                    //window.location.href = '/Home/Index';
+                    sendTokenToServer(token);
+                    
                     window.location.href = '/Home/Index';
                 } else {
                     console.error('Error: ' + data.error);
@@ -56,6 +59,24 @@
                 console.error('There was an error:', error);
             }
         });
+        function sendTokenToServer(token) {
+            fetch('/Home/SaveToken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token: token })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    console.log('Token sent to server successfully');
+                })
+                .catch(error => {
+                    console.error('Error sending token to server:', error);
+                });
+        }
 
     </script>
 
