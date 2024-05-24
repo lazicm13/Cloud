@@ -1,17 +1,17 @@
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Emulator config file set to C:\Users\HP EliteBook 840-G2\Desktop\Cloud-main (1)\Cloud-main\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] DiagnosticsStoreRootPath set to: C:\Users\HP EliteBook 840-G2\AppData\Local\dftmp\Resources\383883a9-6a24-49a5-8c7a-af846469de6f
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Loading config file: C:\Users\HP EliteBook 840-G2\Desktop\Cloud-main (1)\Cloud-main\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Config file to read: C:\Users\HP EliteBook 840-G2\Desktop\Cloud-main (1)\Cloud-main\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Checking VM Type
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Emulator config file set to C:\Users\HP EliteBook 840-G2\Desktop\Cloud-main (1)\Cloud-main\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Extension set to Emulator Mode
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Reading XML configuration file
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Bypassing private config decryption
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Stopping the running plugin, if any
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] No DiagnosticsPlugin is running.
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Killing any DiagnosticsPlugin that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Killing any MonAgentHost that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Diagnostics plugin stopped successfully
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:13:22 PM] Resetting DiagnosticPlugin
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:14:34 PM] DiagnosticsPlugin launched successfully with new configuration
-DiagnosticsPluginLauncher.exe Information: 0 : [5/23/2024 5:14:34 PM] DiagnosticPlugin exited with code 0
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Emulator config file set to C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] DiagnosticsStoreRootPath set to: C:\Users\HP EliteBook 840-G2\AppData\Local\dftmp\Resources\e107ae19-eb18-4ecc-a46f-b85f9f015f14
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Loading config file: C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Config file to read: C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Emulator config file set to C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:26 PM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:28 PM] No DiagnosticsPlugin is running.
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:28 PM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:29 PM] Killing any MonAgentHost that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:29 PM] Diagnostics plugin stopped successfully
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:14:29 PM] Resetting DiagnosticPlugin
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:15:42 PM] DiagnosticsPlugin launched successfully with new configuration
+DiagnosticsPluginLauncher.exe Information: 0 : [5/24/2024 1:15:42 PM] DiagnosticPlugin exited with code 0

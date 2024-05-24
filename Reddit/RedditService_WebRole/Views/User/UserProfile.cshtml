@@ -35,7 +35,7 @@
                     })
                     .then(data => {
                         // Ažuriranje UI sa podacima o korisniku
-                        document.querySelector('.profile-photo').src = data.PhotoUrl;
+                        //document.querySelector('.profile-photo').src = data.PhotoUrl;
                         document.querySelector('h1').textContent = data.Ime + ' ' + data.Prezime;
                         document.querySelector('p.email').textContent = 'Email: ' + data.Email;
                         document.querySelector('p.address').textContent = 'Address: ' + data.Adresa + ', ' + data.Grad + ', ' + data.Drzava;
@@ -60,8 +60,8 @@
             <p class="email"></p>
         </div>
         <div class="profile-details">
+            <button class="edit-button">Edit</button>
             <h2>Personal Information</h2>
-            <button class="edit-button" onclick="editProfile()">Edit</button>
             <p class="address"></p>
             <p class="phone"></p>
         </div>

@@ -11,8 +11,10 @@ namespace RedditService_WebRole.Controllers
     public class UserController : Controller
     {
         UserDataRepository repo = new UserDataRepository();
-        private const string SecurityKey = "this_is_a_long_and_secure_security_key_used_for_jwt_token";
+        private const string SecurityKey = "this_is_a_long_and_secure_security_key_used_for_jwt_token"; // Kljuc samo za proveru
         TokenService tokenservice = new TokenService(SecurityKey);
+        static string clientToken;
+        public static string username;
         // GET: User
         public ActionResult Index()
         {
@@ -21,19 +23,21 @@ namespace RedditService_WebRole.Controllers
 
         public ActionResult UserPage()
         {
-            var user = TempData["User"] as User;
-            ViewBag.User = user;
-            // Pass user information to the view
-            TempData.Keep("User");
-            if (user != null)
-            {
-                ViewBag.IsAuthenticated = true;
-            }
-            else
-            {
-                ViewBag.IsAuthenticated = false;
-            }
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult SaveToken(string token)
+        {
+            clientToken = token;
+            if (token != null)
+            {
+                username = tokenservice.GetUsernameFromToken(clientToken);
+                Debug.WriteLine("Token" + token);
+                Debug.WriteLine("Username: " + username);
+            }
+
+            return View("UserPage");
         }
 
         public ActionResult ProfileTO()

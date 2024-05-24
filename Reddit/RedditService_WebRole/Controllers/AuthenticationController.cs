@@ -24,6 +24,7 @@ namespace RedditService_WebRole.Controllers
 
         public ActionResult Login()
         {
+
             return View("Login");
         }
 

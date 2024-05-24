@@ -13,34 +13,7 @@
     <title>User Page</title>
     <link rel="stylesheet" href="~/Content/homepage.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script type="text/javascript">
-        function sendDataToBackend() {  
-            window.location.href = 'UserProfile';
-        }
-
-
-
-        function loginNavigate() {
-            window.location.href = '../Authentication/login';
-        }
-    
-        $(document).ready(function() {
-    
-    function updateUI(isAuthenticated) {
-        if (isAuthenticated) {
-            $('.auth-container').html('<button onclick="sendDataToBackend()">Profile</button>');
-        } else {
-            $('.auth-container').html('<button onclick="loginNavigate()">Login</button>');
-        }
-    }
-
-    
-    var isAuthenticated = @Html.Raw(Json.Encode(ViewBag.IsAuthenticated));
-    updateUI(isAuthenticated);
-});
-    
-    </script>
+    <script src="~/Scripts/userpage.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="container">
@@ -51,7 +24,7 @@
                 <div class="auth-container">
                     
                 </div>
-            
+             
         </div>
         <ul class="topics">
             <li>Topic 1</li>

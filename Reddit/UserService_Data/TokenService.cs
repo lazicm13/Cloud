@@ -102,7 +102,7 @@ namespace UserService_Data
             catch (Exception ex)
             {
                 // Greška prilikom dekodiranja tokena
-                Console.WriteLine("Error decoding token: " + ex.Message);
+                Console.WriteLine("Error decoding token: " + ex.Message + ex.StackTrace);
                 return null;
             }
         }

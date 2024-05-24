@@ -30,16 +30,15 @@
 
 
 .edit-button {
-    position: absolute; /* Position the button */
-    top: 0; /* Align the button to the top */
-    right: 0; /* Align the button to the right */
-    padding: 8px 15px; /* Adjust padding */
-    background-color: #7aa5d9; /* Soft blue color */
+    padding: 8px 15px;
+    background-color: #7aa5d9;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    float: right;
 }
+
 .profile-header p {
     font-size: 16px;
     color: #666;
