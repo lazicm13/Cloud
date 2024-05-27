@@ -92,6 +92,7 @@
     <Compile Include="Comment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueHelper.cs" />
+    <Compile Include="ThemeDataRepository.cs" />
     <Compile Include="TokenService.cs" />
     <Compile Include="Topic.cs" />
     <Compile Include="User.cs" />

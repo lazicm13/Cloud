@@ -18,6 +18,7 @@ namespace UserService_Data
         public string Email { get; set; }
         public string Password { get; set; }
         public string PhotoUrl { get; set; }
+        public List<Topic> Themes { get; set; }
 
         public User()
         {

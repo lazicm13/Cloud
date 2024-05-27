@@ -106,5 +106,35 @@ namespace UserService_Data
                 return null;
             }
         }
+
+        public string GetEmailFromToken(string token)
+        {
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var jwtToken = tokenHandler.ReadJwtToken(token);
+
+                var usernameClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name);
+                var emailClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email);
+
+                if (usernameClaim != null && emailClaim != null)
+                {
+                    string email = emailClaim.Value;
+                    return email;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Required claims not found in token.");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Greška prilikom dekodiranja tokena
+                Console.WriteLine("Error decoding token: " + ex.Message + ex.StackTrace);
+                return null;
+            }
+        }
+
     }
 }

@@ -50,8 +50,6 @@ namespace UserService_Data
             TableOperation updateOperation = TableOperation.Replace(user);
             _table.Execute(updateOperation);
         }
-        
-
        
 
     }

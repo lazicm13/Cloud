@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Profile Page";
+    
 }
 
 <!DOCTYPE html>
@@ -10,53 +11,14 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="~/Content/profile.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            function fetchUserData() {
-                const token = localStorage.getItem('token');
-
-                if (!token) {
-                    console.error('Token not found!');
-                    return;
-                }
-
-                fetch('/User/ProfilePage', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ token: token })
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Ažuriranje UI sa podacima o korisniku
-                        //document.querySelector('.profile-photo').src = data.PhotoUrl;
-                        document.querySelector('h1').textContent = data.Ime + ' ' + data.Prezime;
-                        document.querySelector('p.email').textContent = 'Email: ' + data.Email;
-                        document.querySelector('p.address').textContent = 'Address: ' + data.Adresa + ', ' + data.Grad + ', ' + data.Drzava;
-                        document.querySelector('p.phone').textContent = 'Phone: ' + data.Broj_telefona;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching user data:', error);
-                    });
-            }
-
-            // Poziv funkcije za preuzimanje podataka o korisniku prilikom učitavanja stranice
-            fetchUserData();
-        });
-
-    </script>
+    <script src="~/Scripts/userProfile.js"></script>
 </head>
 <body>
     <div class="profile-container">
         <div class="profile-header">
             <img src="" alt="Profile Photo" class="profile-photo" />
-            <button class="edit-button">Edit</button>
+            <button onclick="sendTokenToServer()" class="edit-button">Edit</button>
+            <a href="UserPage" class="home-button">🏠</a>
             <h1></h1>
             <p class="email"></p>
         </div>
@@ -80,5 +42,6 @@
             </ul>
         </div>
     </div>
+   
 </body>
 </html>
