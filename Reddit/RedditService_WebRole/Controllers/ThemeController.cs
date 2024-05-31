@@ -77,10 +77,11 @@ namespace RedditService_WebRole.Controllers
             }
         }
 
-        public ActionResult LoadThemes()
+        public ActionResult LoadThemes(string token)
         {
             try
             {
+                
                 var themes = repo.RetrieveAllThemes().ToList();
                 return Json(new { success = true, themes }, JsonRequestBehavior.AllowGet);
             }

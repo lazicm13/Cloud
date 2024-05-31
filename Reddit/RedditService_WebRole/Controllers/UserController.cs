@@ -12,8 +12,7 @@ namespace RedditService_WebRole.Controllers
     public class UserController : Controller
     {
         UserDataRepository repo = new UserDataRepository();
-        private const string SecurityKey = "this_is_a_long_and_secure_security_key_used_for_jwt_token"; // Kljuc samo za proveru
-        TokenService tokenservice = new TokenService(SecurityKey);
+        TokenService tokenservice = new TokenService();
         static string clientToken;
         public static string username;
         // GET: User
@@ -57,10 +56,11 @@ namespace RedditService_WebRole.Controllers
                     return Json(new { error = "Token not provided" });
                 }
 
-                //if (!tokenservice.ValidateToken(token))
-                //{
-                //    return Json(new { error = "Invalid token" });
-                //}
+                if (!tokenservice.ValidateJwtToken(token))
+                {
+                    Debug.WriteLine("Token nije validiran");
+                    return Json(new { error = "Invalid token" });
+                }
 
                 string username = tokenservice.GetUsernameFromToken(token);
                 User currentUser = repo.RetrieveAllUsers().FirstOrDefault(s => s.Ime == username);

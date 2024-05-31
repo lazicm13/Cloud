@@ -37,8 +37,8 @@ namespace UserService_Data
             };
 
             var token = new JwtSecurityToken(
-                issuer: "your_app",
-                audience: "your_client",
+                issuer: "reddit",
+                audience: "client",
                 claims: claims,
                 expires: DateTime.Now.AddHours(1), 
                 signingCredentials: credentials
@@ -48,35 +48,33 @@ namespace UserService_Data
         }
 
 
-        public bool ValidateToken(string token)
+        public bool ValidateJwtToken(string token)
         {
-            if (token == null)
-            {
-                // Handle case where token is null
-                return false;
-            }
-
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_securityKey);
+            var validationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "reddit", // Postavi ovo na svoj Issuer (izdavač)
+                ValidAudience = "client", // Postavi ovo na svoju Audience (publiku)
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("long_secret_key_with_at_least_32_bytes"))
+            };
 
             try
             {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                    ClockSkew = TimeSpan.Zero // Možete postaviti toleranciju za vreme
-                }, out Microsoft.IdentityModel.Tokens.SecurityToken validatedToken);
-
-                return true; // Token je validan
+                SecurityToken validatedToken;
+                tokenHandler.ValidateToken(token, validationParameters, out validatedToken);
+                return true;
             }
-            catch (Exception)
+            catch
             {
-                return false; // Token nije validan ili je istekao
+                // Token nije validan
+                return false;
             }
         }
+
 
         public string GetUsernameFromToken(string token)
         {
