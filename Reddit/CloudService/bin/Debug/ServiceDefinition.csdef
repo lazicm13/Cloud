@@ -36,4 +36,20 @@
       <Import moduleName="Diagnostics" />
     </Imports>
   </WebRole>
+  <WorkerRole name="NotificationService" vmsize="Standard_D1_v2">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+    </ConfigurationSettings>
+    <Contents>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\rcf\Debug\NotificationServiceContent\" />
+      </Content>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\ecf\NotificationServiceContent\" />
+      </Content>
+    </Contents>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+  </WorkerRole>
 </ServiceDefinition>

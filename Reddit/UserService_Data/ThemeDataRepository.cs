@@ -47,5 +47,11 @@ namespace UserService_Data
             _table.Execute(updateOperation);
         }
 
+        public void DeleteTheme(Topic topic)
+        {
+            TableOperation deleteOperation = TableOperation.Delete(topic);
+            _table.Execute(deleteOperation);
+        }
+
     }
 }

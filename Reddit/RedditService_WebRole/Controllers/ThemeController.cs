@@ -77,12 +77,22 @@ namespace RedditService_WebRole.Controllers
             }
         }
 
-        public ActionResult LoadThemes(string token)
+        public ActionResult LoadThemes(string sortOrder)
         {
             try
             {
-                
                 var themes = repo.RetrieveAllThemes().ToList();
+
+                if (sortOrder == null || sortOrder.ToLower() == "asc")
+                {
+
+                    themes = themes.OrderBy(t => t.Title).ToList();
+                }
+                else
+                {
+                    themes = themes.OrderByDescending(t => t.Title).ToList();
+                }
+
                 return Json(new { success = true, themes }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
@@ -90,6 +100,36 @@ namespace RedditService_WebRole.Controllers
                 Debug.WriteLine(e.Message + e.StackTrace);
                 return Json(new { success = false, message = "Failed to load themes" }, JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteTheme(string themeId, string token)
+        {
+            try
+            {
+                if (!tokenService.ValidateJwtToken(token))
+                    return Json(new { success = false, message = "Token validation failed" }, JsonRequestBehavior.AllowGet);
+                Debug.WriteLine("rowkey provera: " + themeId);
+
+                var themes = repo.RetrieveAllThemes().ToList();
+                foreach (var t in themes)
+                {
+                    if (t.RowKey.Equals(themeId))
+                    {
+                        repo.DeleteTheme(t);
+                        return Json(new { success = true }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message + "\n" + e.StackTrace);
+                return Json(new { success = false, message = "Post deleting failed" }, JsonRequestBehavior.AllowGet);
+            }
+
+            
+
+            return Json(new { success = false, message = "Post deleting failed" }, JsonRequestBehavior.AllowGet);
         }
 
     }

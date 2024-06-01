@@ -189,6 +189,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\newTheme.js" />
     <Content Include="Scripts\registration.js" />
+    <Content Include="Scripts\theme.js" />
     <Content Include="Scripts\userpage.js" />
     <Content Include="Scripts\userProfile.js" />
     <Content Include="Web.config" />
@@ -199,10 +200,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Register.cshtml" />
     <Content Include="Views\Authentication\Register.cshtml" />
     <Content Include="Views\User\UserPage.cshtml" />
     <Content Include="Views\Authentication\Login.cshtml" />

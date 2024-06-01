@@ -46,23 +46,30 @@ function getEmailFromToken(token) {
     }
 }
 
-function loadThemes() {
+function loadThemes(sortOrder) {
     // Dobavi JWT token iz localStorage-a
     var token = localStorage.getItem('token');
     var userEmail = getEmailFromToken(token);
     console.log(userEmail);
+
+    // Isprazni listu tema pre nego što ponovo učitaš teme
+    $('.topics').empty();
 
     // Učitaj teme korisnika koji je ulogovan
     $.ajax({
         url: '/Theme/LoadThemes',
         type: 'GET',
         dataType: 'json',
+        data: {
+            sortOrder: sortOrder // Prosledi parametar za sortiranje na server
+        },
         success: function (response) {
             if (response.success) {
                 var userThemes = response.themes.filter(function (theme) {
                     return theme.Publisher === userEmail; // Isključi teme korisnika koji je ulogovan
                 });
-                displayThemes(userThemes, 'Your topics');
+                displayThemes(userThemes, 'Your topics', true);
+                
             } else {
                 console.error(response.message);
             }
@@ -77,12 +84,15 @@ function loadThemes() {
         url: '/Theme/LoadThemes',
         type: 'GET',
         dataType: 'json',
+        data: {
+            sortOrder: sortOrder // Prosledi parametar za sortiranje na server
+        },
         success: function (response) {
             if (response.success) {
                 var otherThemes = response.themes.filter(function (theme) {
                     return theme.Publisher !== userEmail; // Isključi teme korisnika koji je ulogovan
                 });
-                displayThemes(otherThemes, 'Other topics');
+                displayThemes(otherThemes, 'Other topics', false);
             } else {
                 console.error(response.message);
             }
@@ -93,17 +103,48 @@ function loadThemes() {
     });
 }
 
-function displayThemes(themes, title) {
+
+
+function searchThemes() {
+    var searchText = document.getElementById('searchInput').value.toLowerCase();
+    var $themes = $('.theme-container');
+
+    $themes.each(function () {
+        var $theme = $(this);
+        var title = $theme.find('h2').text().toLowerCase();
+
+        if (title.includes(searchText)) {
+            $theme.show();
+        } else {
+            $theme.hide();
+        }
+    });
+}
+
+function sortThemes() {
+    var sortOrder = document.getElementById('sortOrder').value;
+    loadThemes(sortOrder);
+}
+
+function displayThemes(themes, title, loggedInUser) {
     var $topicsList = $('.topics');
 
-    // Dodaj naslov
     $topicsList.append('<h3>' + title + '</h3>' + '<hr/><br/>');
 
     themes.forEach(function (theme) {
        
         var $themeContainer = $('<div class="theme-container"></div>');
+        $themeContainer.attr('data-rowKey', theme.RowKey);
 
-        // Dodajemo naslov teme
+        if (loggedInUser) {
+            var $trash = $('<span class="trash">🗑️</span>');
+            $themeContainer.append($trash);
+        }
+        else {
+            var $subscribeButton = $('<button class="subscribeButton">Subscribe</button>');
+            $themeContainer.append($subscribeButton);
+        }
+
         var $title = $('<h2></h2>').text(theme.Title);
         $themeContainer.append($title);
 
@@ -111,7 +152,7 @@ function displayThemes(themes, title) {
             var $publisher = $('<h5></h5>').text(theme.Publisher);
             $themeContainer.append($publisher)
         }
-        // Dodajemo sadržaj teme
+       
         var $content = $('<p></p>').text(theme.Content);
         $themeContainer.append($content);
 
@@ -123,14 +164,14 @@ function displayThemes(themes, title) {
 
         var $votes = $('<div class="votes"></div>');
 
-        // Dodavanje ikona za lajkove i dislajkove
+        
         $votes.append('<i class="fas fa-arrow-up"></i>');
         $votes.append('<span class="upvote-count">' + theme.Upvote + '  </span>');
 
         $votes.append('<i class="fas fa-arrow-down"></i>');
         $votes.append('<span class="downvote-count">' + theme.Downvote + '</span>');
 
-        // Dodavanje kreiranih ikona u odgovarajući kontejner na stranici
+        
         $themeContainer.append($votes);
 
 

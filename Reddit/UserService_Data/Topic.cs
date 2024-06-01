@@ -38,33 +38,5 @@ namespace UserService_Data
             RowKey = Guid.NewGuid().ToString();
         }
 
-        /*
-        public void ValidateContent()
-        {
-            switch (Content)
-            {
-                case string tekst:
-                    Console.WriteLine($"Tekstualni sadržaj: {tekst}");
-                    break;
-                case Uri url:
-                    Console.WriteLine($"Link: {url}");
-                    break;
-                case Image slika:
-                    Console.WriteLine("Sadržaj je slika.");
-                    // Prikaz slike ili njene informacije
-                    Console.WriteLine($"Dimenzije slike: {slika.Width}x{slika.Height}");
-                    break;
-                default:
-                    Console.WriteLine($"Ostali tip sadržaja: {Content}");
-                    break;
-            }
-        }
-        */
-
-
-
-
-
-
     }
 }
