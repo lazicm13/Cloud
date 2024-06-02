@@ -68,7 +68,9 @@ function loadThemes(sortOrder) {
                 var userThemes = response.themes.filter(function (theme) {
                     return theme.Publisher === userEmail; // Isključi teme korisnika koji je ulogovan
                 });
-                displayThemes(userThemes, 'Your topics', true);
+                getAllSubscriptions(function (subscriptions) {
+                    displayThemes(userThemes, 'Your topics', true, subscriptions);
+                });
                 
             } else {
                 console.error(response.message);
@@ -78,6 +80,9 @@ function loadThemes(sortOrder) {
             console.error(error);
         }
     });
+
+    
+
 
     // Učitaj sve ostale teme
     $.ajax({
@@ -92,7 +97,10 @@ function loadThemes(sortOrder) {
                 var otherThemes = response.themes.filter(function (theme) {
                     return theme.Publisher !== userEmail; // Isključi teme korisnika koji je ulogovan
                 });
-                displayThemes(otherThemes, 'Other topics', false);
+
+                getAllSubscriptions(function (subscriptions) {
+                    displayThemes(otherThemes, 'Other topics', false, subscriptions);
+                });
             } else {
                 console.error(response.message);
             }
@@ -103,6 +111,27 @@ function loadThemes(sortOrder) {
     });
 }
 
+
+function getAllSubscriptions(callback) {
+    $.ajax({
+        url: '/Theme/GetAllSubscriptions',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            if (response.success) {
+                var subscriptions = response.subs;
+                
+                console.log(subscriptions);
+                callback(subscriptions);
+            } else {
+                console.error(response.message); // Ako dođe do greške, ispišemo poruku u konzoli
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(error); 
+        }
+    });
+}
 
 
 function searchThemes() {
@@ -126,13 +155,16 @@ function sortThemes() {
     loadThemes(sortOrder);
 }
 
-function displayThemes(themes, title, loggedInUser) {
+function displayThemes(themes, title, loggedInUser, subscriptions) {
     var $topicsList = $('.topics');
+
+    var token = localStorage.getItem('token');
+    var userEmail = getEmailFromToken(token);
 
     $topicsList.append('<h3>' + title + '</h3>' + '<hr/><br/>');
 
     themes.forEach(function (theme) {
-       
+
         var $themeContainer = $('<div class="theme-container"></div>');
         $themeContainer.attr('data-rowKey', theme.RowKey);
 
@@ -141,10 +173,30 @@ function displayThemes(themes, title, loggedInUser) {
             $themeContainer.append($trash);
         }
         else {
-            var $subscribeButton = $('<button class="subscribeButton">Subscribe</button>');
-            $themeContainer.append($subscribeButton);
-        }
+            // Provera da li je korisnik pretplaćen na temu
+            var isSubscribed = false;
 
+            if (subscriptions && Array.isArray(subscriptions)) {
+                subscriptions.forEach(function (subscription) {
+                    if (subscription.ThemeId === theme.RowKey && subscription.UserId === userEmail) {
+                        isSubscribed = true;
+                        return; // Prekida petlju kada se nađe odgovarajuća pretplata
+                    }
+                });
+            } else {
+                console.error("Subscriptions nisu definisane ili nisu niz.");
+            }
+
+
+
+            if (isSubscribed) {
+                var $unsubscribeButton = $('<button class="unsubscribeButton">Unsubscribe</button>');
+                $themeContainer.append($unsubscribeButton);
+            } else {
+                var $subscribeButton = $('<button class="subscribeButton">Subscribe</button>');
+                $themeContainer.append($subscribeButton);
+            }
+        }
         var $title = $('<h2></h2>').text(theme.Title);
         $themeContainer.append($title);
 
@@ -152,7 +204,7 @@ function displayThemes(themes, title, loggedInUser) {
             var $publisher = $('<h5></h5>').text(theme.Publisher);
             $themeContainer.append($publisher)
         }
-       
+
         var $content = $('<p></p>').text(theme.Content);
         $themeContainer.append($content);
 
@@ -164,19 +216,21 @@ function displayThemes(themes, title, loggedInUser) {
 
         var $votes = $('<div class="votes"></div>');
 
-        
+
         $votes.append('<i class="fas fa-arrow-up"></i>');
         $votes.append('<span class="upvote-count">' + theme.Upvote + '  </span>');
 
         $votes.append('<i class="fas fa-arrow-down"></i>');
         $votes.append('<span class="downvote-count">' + theme.Downvote + '</span>');
 
-        
+
         $themeContainer.append($votes);
 
 
         $topicsList.append($themeContainer);
     });
 }
+
+
 
 loadThemes();

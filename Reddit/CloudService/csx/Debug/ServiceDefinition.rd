@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CloudService" generation="1" functional="0" release="0" Id="8a41fff6-f3a8-4139-a218-584551c86f55" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CloudService" generation="1" functional="0" release="0" Id="a35ece3f-97a6-4d69-b140-be4f8eeaad54" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="CloudServiceGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -121,9 +121,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="d186befe-c04d-46a1-ba35-e0d3b09cbd77" ref="Microsoft.RedDog.Contract\ServiceContract\CloudServiceContract@ServiceDefinition">
+    <implementation Id="1432f3d2-d330-4747-a3fc-af434b7718d1" ref="Microsoft.RedDog.Contract\ServiceContract\CloudServiceContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="13d01730-1e13-4d54-9744-6d7de634da3e" ref="Microsoft.RedDog.Contract\Interface\RedditService_WebRole:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="896c6833-3c3b-4dfa-a1fa-822c68a48b4b" ref="Microsoft.RedDog.Contract\Interface\RedditService_WebRole:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/CloudService/CloudServiceGroup/RedditService_WebRole:Endpoint1" />
           </inPort>

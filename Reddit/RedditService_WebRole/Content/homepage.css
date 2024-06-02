@@ -91,7 +91,7 @@
 
     
 
-.trash, .subscribeButton {
+.trash, .subscribeButton, .unsubscribeButton{
     position: absolute;
     top: 10px; 
     right: 10px; 
@@ -102,13 +102,15 @@
     font-size: 20px; /* Povećajemo veličinu fonta */
 }
 
-.subscribeButton {
+.subscribeButton, .unsubscribeButton {
     padding: 5px 10px; /* Manji padding */
-    background-color: blue; /* Boja pozadine */
+    background-color: red; /* Boja pozadine */
     color: white; /* Boja teksta */
     border: none; /* Bez ivice */
     border-radius: 5px; /* Zaobljeni uglovi */
 }
+
+
 
 .votes {
     position: absolute;
