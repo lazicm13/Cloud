@@ -316,7 +316,7 @@ namespace RedditService_WebRole.Controllers
                     Comments = t.Comments.Select(c => new {
                         c.Content,
                         c.Upvote,
-                        c.Downote,
+                        c.Downvote,
                         c.ThemeOwner,
                         c.RowKey
                     }).ToList()
@@ -355,7 +355,7 @@ namespace RedditService_WebRole.Controllers
                 {
                     c.Content,
                     c.Upvote,
-                    c.Downote,
+                    c.Downvote,
                     c.ThemeOwner,
                     c.RowKey // Assuming RowKey as the unique identifier for the comment
                 }).ToList();

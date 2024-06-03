@@ -123,14 +123,6 @@ function loadThemes(sortOrder) {
 
     // Isprazni listu tema pre nego što ponovo učitaš teme
     $('.topics').empty();
-
-
-
-   
-   
-
-
-
     // Učitaj teme korisnika koji je ulogovan
     $.ajax({
         url: '/Theme/LoadThemes',
@@ -155,8 +147,6 @@ function loadThemes(sortOrder) {
             console.error(error);
         }
     });
-
-
 
     // Učitaj sve ostale teme
     $.ajax({

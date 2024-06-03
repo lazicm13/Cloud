@@ -37,7 +37,20 @@ function loadThemeDetails() {
                 $('#theme-image').attr('src', response.theme.PhotoUrl);
                 $('#theme-upvotes').text(response.theme.Upvote);
                 $('#theme-downvotes').text(response.theme.Downvote);
-                $('#theme-time').text(new Date(response.theme.Time_published).toLocaleString());
+                $('#theme-publisher').text(response.theme.Publisher);
+                console.log('Raw Time Published:', response.theme.Time_published);
+
+                const timestampMatch = response.theme.Time_published.match(/\/Date\((\d+)\)\//);
+                if (timestampMatch) {
+                    const timestamp = parseInt(timestampMatch[1], 10);
+                    const publishedDate = new Date(timestamp);
+                    $('#theme-time').text(publishedDate.toLocaleString());
+                } else {
+                    console.error('Invalid date format:', response.theme.Time_published);
+                    $('#theme-time').text('Invalid date');
+                }
+
+
                 $('#theme-publisher').text(response.theme.Publisher);
             } else {
                 console.error(response.message);
@@ -60,10 +73,33 @@ function loadComments() {
         dataType: 'json',
         success: function (response) {
             if (response.success) {
+                console.log("Comments:", response.comments);
                 const commentsList = $('#comments-list');
                 commentsList.empty();
                 response.comments.forEach(function (comment) {
-                    const commentItem = $('<li></li>').text(comment.Content);
+                    console.log("Comment:", comment.RowKey);
+                    const commentText = $('<span></span>').html(`${comment.Content}  <b>Published by:</b> ${comment.Publisher}`);
+                    const voteContainer = $('<div></div>').addClass('vote-container');
+                    const upvoteButton = $('<button></button>').addClass('upvote-button').text('👍').click(function () {
+                        // Implement upvote functionality here
+                    });
+                    const downvoteButton = $('<button></button>').addClass('downvote-button').text('👎').click(function () {
+                        // Implement downvote functionality here
+                    });
+                    const upvoteCount = $('<span class="upvote-count"></span>').addClass('upvote-count').text(` ${comment.Upvote}`);
+                    const downvoteCount = $('<span class="downvote-count"></span>').addClass('downvote-count').text(` ${comment.Downvote}`);
+
+                    // Creating delete button
+                    const deleteButton = $('<button></button>').text('🗑️').click(createDeleteHandler(comment.RowKey));
+                    
+                    // Creating a container for comment text and delete button
+                    const commentItem = $('<li></li>').addClass('comment-item');
+                    const commentContainer = $('<div></div>').addClass('comment-container');
+                    commentContainer.append(commentText);
+                    voteContainer.append(upvoteButton, upvoteCount, downvoteButton, downvoteCount);
+                    commentContainer.append(voteContainer);
+                    commentContainer.append(deleteButton);
+                    commentItem.append(commentContainer);
                     commentsList.append(commentItem);
                 });
             } else {
@@ -76,14 +112,39 @@ function loadComments() {
     });
 }
 
+function deleteComment(commentId) {
+    const token = localStorage.getItem('token');
 
+    const data = {
+        token: token,
+        commentId: commentId
+    };
 
-
+    $.ajax({
+        url: '/Theme/DeleteComment',
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        success: function (response) {
+            if (response.success) {
+                console.log("vracen success");
+                loadComments();
+            } else {
+                console.error(response.message);
+                alert(response.message);
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
 
 function AddComment() {
     
-    const commentContent = document.getElementById('comment-content').value;   
-    const token = localStorage.getItem('token'); 
+    const commentContent = document.getElementById('comment-content').value;
+    const token = localStorage.getItem('token');
+    console.log("token: ", token);
     const themeId = getThemeId(); 
 
     const data = {
@@ -114,4 +175,11 @@ function AddComment() {
             console.error(error);
         }
     });
+}
+
+function createDeleteHandler(commentId) {
+    return function () {
+        console.log("Deleting comment with ID:", commentId);
+        deleteComment(commentId);
+    };
 }

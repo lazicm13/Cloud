@@ -159,41 +159,40 @@ function sendTokenToServer() {
 }
 
 
-    async function handleLinkClick(token, rowKey) {
-        const url = `/Theme/Details`;
-        const params = {
-            token: token,
-            id: rowKey
-        };
+async function handleLinkClick(token, rowKey) {
+    const url = `/Theme/Details`;
+    const params = {
+        token: token,
+        id: rowKey
+    };
 
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(params)
-            });
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+        });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data = await response.json();
-            console.log(data);
-            if (data.success) {
-                console.log("Success");
-                window.location.href = '/User/ThemeDetails?id=' + encodeURIComponent(rowKey);
-            }
-            
-            if (data.redirectUrl) {
-                window.location.href = data.redirectUrl;
-            }
-        } catch (error) {
-            // Handle any errors
-            console.error('Error:', error);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-    }
 
+        const data = await response.json();
+        console.log(data);
+        if (data.success) {
+            console.log("Success");
+            window.location.href = '/User/ThemeDetails?id=' + encodeURIComponent(rowKey);
+        }
+
+        if (data.redirectUrl) {
+            window.location.href = data.redirectUrl;
+        }
+    } catch (error) {
+        // Handle any errors
+        console.error('Error:', error);
+    }
+}
 
 

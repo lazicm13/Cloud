@@ -152,8 +152,9 @@ namespace RedditService_WebRole.Controllers
                 {
                     c.Content,
                     c.Upvote,
-                    c.Downote,
-                    c.Publisher
+                    c.Downvote,
+                    c.Publisher,
+                    c.RowKey
                 }).ToList();
 
                 return Json(new { success = true, comments = commentData }, JsonRequestBehavior.AllowGet);
@@ -186,7 +187,7 @@ namespace RedditService_WebRole.Controllers
                     Content = content,
                     ThemeOwner = themeId,
                     Upvote = 0,
-                    Downote = 0,
+                    Downvote = 0,
                 };
                
                 if (commentRepo.Exists(id))
@@ -357,6 +358,30 @@ namespace RedditService_WebRole.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult DeleteComment(string token, string commentId)
+        {
+            string username = tokenService.GetUsernameFromToken(token);
+            User user = userRepo.RetrieveAllUsers().FirstOrDefault(u => u.Ime == username);
+            Comment comment = commentRepo.RetrieveAllComments().FirstOrDefault(c => c.RowKey == commentId);
+            string topicId = comment.ThemeOwner;
+            Topic topic = repo.RetrieveAllThemes().FirstOrDefault(t => t.RowKey == topicId);
+            User owner = userRepo.RetrieveAllUsers().FirstOrDefault(u => u.RowKey == topic.Publisher);
 
+            if (user == null || comment == null || topic == null || owner == null) // Check if any required objects are null
+            {
+                return Json(new { success = false, message = "You are not logged in or the comment does not exist" });
+            }
+
+            if (user.RowKey == comment.Publisher || user.RowKey == owner.RowKey)
+            {
+                commentRepo.DeleteComment(comment);
+                if (topic.Comments != null)
+                {
+                    topic.Comments.Remove(comment);
+                }
+            }
+            return Json(new { success = true });
+        }
     }
 }
