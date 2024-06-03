@@ -19,6 +19,7 @@ namespace RedditService_WebRole.Controllers
         ThemeDataRepository repo = new ThemeDataRepository();
         CommentDataRepository commentRepo = new CommentDataRepository();
         UserDataRepository userRepo = new UserDataRepository();
+        SubscriptionRepository subRepo = new SubscriptionRepository();
         public int counter = 0;
 
         // GET: Theme
@@ -278,8 +279,84 @@ namespace RedditService_WebRole.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult AddSubscriber(string themeId, string token)
+        {
+            try
+            {
+                if (!tokenService.ValidateJwtToken(token))
+                    return Json(new { success = false, message = "Token validation failed" }, JsonRequestBehavior.AllowGet);
 
-        
+                var email = tokenService.GetEmailFromToken(token);
+
+                Subscription sub = new Subscription();
+
+                sub.ThemeId = themeId;
+                sub.UserId = email;
+
+                Debug.WriteLine("Provera: " + sub.UserId + sub.ThemeId + sub.RowKey);
+
+                var subs = subRepo.RetrieveAllSubscriptions().ToList();
+                if (!subRepo.SubscriptionExists(themeId, email))
+                    subRepo.AddSubscription(sub);
+                else
+                    return Json(new { success = false, message = "You are already subscribed to this post." }, JsonRequestBehavior.AllowGet);
+                return Json(new { success = true, message = "Subscription added." }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message + "\n" + e.StackTrace);
+                return Json(new { success = false, message = "Post subscription failed" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteSubscriber(string themeId, string token)
+        {
+            try
+            {
+                if (!tokenService.ValidateJwtToken(token))
+                    return Json(new { success = false, message = "Token validation failed" }, JsonRequestBehavior.AllowGet);
+
+                var email = tokenService.GetEmailFromToken(token);
+
+                var subs = subRepo.RetrieveAllSubscriptions().ToList();
+
+                Debug.WriteLine("Check email and themeId: " + email + themeId);
+                foreach (var s in subs)
+                {
+                    if (s.ThemeId.Equals(themeId) && s.UserId.Equals(email))
+                    {
+                        subRepo.DeleteSubscription(s);
+                        return Json(new { success = true, message = "Subscription deleted." }, JsonRequestBehavior.AllowGet);
+                    }
+                }
+
+                return Json(new { success = false, message = "You are not subscribed to this post." }, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message + "\n" + e.StackTrace);
+                return Json(new { success = false, message = "Post unsubscription failed" }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult GetAllSubscriptions()
+        {
+            try
+            {
+                var subs = subRepo.RetrieveAllSubscriptions().ToList();
+                Debug.WriteLine("broj elemenata u sub:" + subs.Count.ToString());
+                return Json(new { success = true, subs }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, message = e.StackTrace + e.Message }, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
 
     }
 }

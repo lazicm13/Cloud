@@ -144,8 +144,9 @@ function loadThemes(sortOrder) {
                 var userThemes = response.themes.filter(function (theme) {
                     return theme.Publisher === userEmail; // Isključi teme korisnika koji je ulogovan
                 });
-                displayThemes(userThemes, 'Your topics', true);
-                
+                getAllSubscriptions(function (subscriptions) {
+                    displayThemes(userThemes, 'Your topics', true, subscriptions);
+                });
             } else {
                 console.error(response.message);
             }
@@ -170,7 +171,9 @@ function loadThemes(sortOrder) {
                 var otherThemes = response.themes.filter(function (theme) {
                     return theme.Publisher !== userEmail; // Isključi teme korisnika koji je ulogovan
                 });
-                displayThemes(otherThemes, 'Other topics', false);
+                getAllSubscriptions(function (subscriptions) {
+                    displayThemes(otherThemes, 'Other topics', false, subscriptions);
+                });
             } else {
                 console.error(response.message);
             }
@@ -181,6 +184,27 @@ function loadThemes(sortOrder) {
     });
 }
 
+
+function getAllSubscriptions(callback) {
+    $.ajax({
+        url: '/Theme/GetAllSubscriptions',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            if (response.success) {
+                var subscriptions = response.subs;
+
+                console.log(subscriptions);
+                callback(subscriptions);
+            } else {
+                console.error(response.message); // Ako dođe do greške, ispišemo poruku u konzoli
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
 
 
 function searchThemes() {
@@ -204,9 +228,13 @@ function sortThemes() {
     loadThemes(sortOrder);
 }
 
-function displayThemes(themes, title, loggedInUser) {
+function displayThemes(themes, title, loggedInUser, subscriptions) {
     var $topicsList = $('.topics');
     $topicsList.append('<h3>' + title + '</h3><hr/><br/>');
+
+    var token = localStorage.getItem('token');
+    var userEmail = getEmailFromToken(token);
+
     themes.forEach(function (theme) {
        
         var $themeContainer = $('<div class="theme-container"></div>');
@@ -218,10 +246,30 @@ function displayThemes(themes, title, loggedInUser) {
             $themeContainer.append($trash);
         }
         else {
-            var $subscribeButton = $('<button class="subscribeButton">Subscribe</button>');
-            $themeContainer.append($subscribeButton);
-        }
+            // Provera da li je korisnik pretplaćen na temu
+            var isSubscribed = false;
 
+            if (subscriptions && Array.isArray(subscriptions)) {
+                subscriptions.forEach(function (subscription) {
+                    if (subscription.ThemeId === theme.RowKey && subscription.UserId === userEmail) {
+                        isSubscribed = true;
+                        return; // Prekida petlju kada se nađe odgovarajuća pretplata
+                    }
+                });
+            } else {
+                console.error("Subscriptions nisu definisane ili nisu niz.");
+            }
+
+
+
+            if (isSubscribed) {
+                var $unsubscribeButton = $('<button class="unsubscribeButton">Unsubscribe</button>');
+                $themeContainer.append($unsubscribeButton);
+            } else {
+                var $subscribeButton = $('<button class="subscribeButton">Subscribe</button>');
+                $themeContainer.append($subscribeButton);
+            }
+        }
         var $title = $('<h2></h2>').append(
             $('<a></a>')
                 .attr('href', '/User/ThemeDetails?id=' + encodeURIComponent(theme.RowKey))
