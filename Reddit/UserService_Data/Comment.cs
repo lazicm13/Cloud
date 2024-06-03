@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
+
 
 namespace UserService_Data
 {
-    public class Comment
+    public class Comment : TableEntity
     {
+        public string Publisher { get; set; }
+        public string ThemeOwner { get; set; }
         public string Content { get; set; }
         public int Upvote { get; set; }
         public int Downote { get; set; }
 
-        public Comment(string content, int upvote, int downote)
-        {
-            Content = content;
-            Upvote = upvote;
-            Downote = downote;
-        }
+       
 
         public override string ToString()
         {
             return Content;
+        }
+
+        public Comment()
+        {
+            PartitionKey = "Comment";
+            RowKey = Guid.NewGuid().ToString(); 
         }
 
     }

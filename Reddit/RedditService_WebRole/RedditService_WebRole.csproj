@@ -169,6 +169,7 @@
     <Content Include="Content\profile.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styleRegister.css" />
+    <Content Include="Content\themeDetails.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -190,6 +191,7 @@
     <Content Include="Scripts\newTheme.js" />
     <Content Include="Scripts\registration.js" />
     <Content Include="Scripts\theme.js" />
+    <Content Include="Scripts\themeDetails.js" />
     <Content Include="Scripts\userpage.js" />
     <Content Include="Scripts\userProfile.js" />
     <Content Include="Web.config" />
@@ -208,6 +210,9 @@
     <Content Include="Views\User\UpdateUser.cshtml" />
     <Content Include="Views\User\UserProfile.cshtml" />
     <Content Include="Views\Theme\NewTheme.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Theme\DisplayTheme.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
