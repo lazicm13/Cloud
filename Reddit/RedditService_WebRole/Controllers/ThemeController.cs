@@ -17,7 +17,10 @@ namespace RedditService_WebRole.Controllers
     {
         TokenService tokenService = new TokenService();
         ThemeDataRepository repo = new ThemeDataRepository();
-        SubscriptionRepository subRepo = new SubscriptionRepository();
+        CommentDataRepository commentRepo = new CommentDataRepository();
+        UserDataRepository userRepo = new UserDataRepository();
+        public int counter = 0;
+
         // GET: Theme
         public ActionResult Index()
         {
@@ -134,82 +137,149 @@ namespace RedditService_WebRole.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddSubscriber(string themeId, string token)
+        public ActionResult GetComments(string id)
         {
             try
             {
-                if (!tokenService.ValidateJwtToken(token))
-                    return Json(new { success = false, message = "Token validation failed" }, JsonRequestBehavior.AllowGet);
-
-                var email = tokenService.GetEmailFromToken(token);
-
-                Subscription sub = new Subscription();
-
-                sub.ThemeId = themeId;
-                sub.UserId = email;
-
-                Debug.WriteLine("Provera: " + sub.UserId + sub.ThemeId + sub.RowKey);
-
-                var subs = subRepo.RetrieveAllSubscriptions().ToList();
-                if (!subRepo.SubscriptionExists(themeId, email)) 
-                    subRepo.AddSubscription(sub);
-                else
-                    return Json(new { success = false, message = "You are already subscribed to this post." }, JsonRequestBehavior.AllowGet);
-                return Json(new { success = true, message = "Subscription added." }, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message + "\n" + e.StackTrace);
-                return Json(new { success = false, message = "Post subscription failed" }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult DeleteSubscriber(string themeId, string token)
-        {
-            try
-            {
-                if (!tokenService.ValidateJwtToken(token))
-                    return Json(new { success = false, message = "Token validation failed" }, JsonRequestBehavior.AllowGet);
-
-                var email = tokenService.GetEmailFromToken(token);
-
-                var subs = subRepo.RetrieveAllSubscriptions().ToList();
-
-                Debug.WriteLine("Check email and themeId: " + email + themeId);
-                foreach(var s in subs)
+                if (string.IsNullOrEmpty(id))
                 {
-                    if(s.ThemeId.Equals(themeId) && s.UserId.Equals(email))
-                    {
-                        subRepo.DeleteSubscription(s);
-                        return Json(new { success = true, message = "Subscription deleted." }, JsonRequestBehavior.AllowGet);
-                    }
+                    return Json(new { success = false, message = "Theme not found" }, JsonRequestBehavior.AllowGet);
                 }
 
-                return Json(new { success = false, message = "You are not subscribed to this post." }, JsonRequestBehavior.AllowGet);
+                var comments = commentRepo.RetrieveAllComments().Where(c => c.ThemeOwner == id).ToList();
+                var commentData = comments.Select(c => new
+                {
+                    c.Content,
+                    c.Upvote,
+                    c.Downote,
+                    c.Publisher
+                }).ToList();
 
+                return Json(new { success = true, comments = commentData }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message + "\n" + e.StackTrace);
-                return Json(new { success = false, message = "Post unsubscription failed" }, JsonRequestBehavior.AllowGet);
+                Debug.WriteLine(e.StackTrace + e.Message);
+                return new HttpStatusCodeResult(500, "Internal server error");
             }
         }
 
-        public ActionResult GetAllSubscriptions()
+
+        [HttpPost]
+        public ActionResult SubmitComment(string token, string themeId, string content)
         {
             try
             {
-                var subs = subRepo.RetrieveAllSubscriptions().ToList();
-                Debug.WriteLine("broj elemenata u sub:" + subs.Count.ToString());
-                return Json(new { success = true, subs}, JsonRequestBehavior.AllowGet);
-            }
-            catch(Exception e)
-            {
-                return Json(new { success = false, message = e.StackTrace + e.Message }, JsonRequestBehavior.AllowGet);
-            }
+                if (!tokenService.ValidateJwtToken(token))
+                {
+                    return Json(new { success = false, message = "Invalid token" });
+                }
 
+                string username = tokenService.GetUsernameFromToken(token);
+                string email = userRepo.RetrieveAllUsers().FirstOrDefault(u => u.Ime == username)?.Email;
+                Topic topic = repo.RetrieveAllThemes().FirstOrDefault(t => t.RowKey == themeId);
+                string id = themeId + email;
+                Comment newComment = new Comment()
+                {
+                    Publisher = email,
+                    Content = content,
+                    ThemeOwner = themeId,
+                    Upvote = 0,
+                    Downote = 0,
+                };
+               
+                if (commentRepo.Exists(id))
+                {
+                    counter++;
+                    newComment.RowKey += counter.ToString();
+                }
+                commentRepo.AddComment(newComment);
+                if (topic.Comments == null)
+                {
+                    topic.Comments = new List<Comment>();
+                }
+                topic.Comments.Add(newComment);
+                repo.UpdateTopic(topic);
+                return Json(new { success = true });
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.StackTrace + e.Message);
+                return Json(new { success = false, message = e.Message });
+            }
         }
+
+
+        [HttpPost]
+        public ActionResult Details(string token, string id)
+        {
+            try
+            {
+                string username = tokenService.GetUsernameFromToken(token);
+                var theme = repo.RetrieveAllThemes().FirstOrDefault(t => t.RowKey == id);
+                string email = userRepo.RetrieveAllUsers().FirstOrDefault(u => u.Ime == username)?.Email;
+                var comments = commentRepo.RetrieveAllComments().Where(c => c.Publisher == email).ToList();
+                List<Comment> newListComments = new List<Comment>(); 
+                foreach(Comment c in comments)
+                {
+                    if (c.ThemeOwner == id)
+                    {
+                        newListComments.Add(c);
+                    }
+                }
+                if (theme == null)
+                {
+                    return HttpNotFound();
+                }
+
+                var themeData = new
+                {
+                    theme.RowKey,
+                    theme.Time_published,
+                    theme.Publisher,
+                    theme.Title,
+                    theme.Content,
+                    theme.Upvote,
+                    theme.Downvote,
+                    theme.PhotoUrl,
+                    Comments = newListComments
+                };
+
+                return Json(new { success = true, theme = themeData }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(new { success = false, message = e.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        public ActionResult GetThemeDetails(string id)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(id))
+                {
+                    return Json(new { success = false, message = "Theme not found" }, JsonRequestBehavior.AllowGet);
+                }
+
+                var theme = repo.RetrieveAllThemes().FirstOrDefault(t => t.RowKey == id);
+                if (theme == null)
+                {
+                    return Json(new { success = false, message = "Theme not found" }, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new { success = true, theme = theme }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.StackTrace + e.Message);
+                return new HttpStatusCodeResult(500, "Internal server error");
+            }
+        }
+
+
+        
 
     }
 }
