@@ -14,8 +14,6 @@ function goBackToHome() {
     window.location.href = '/User/UserPage';
 }
 
-
-
 function getThemeId() {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get('id');
@@ -80,11 +78,15 @@ function loadComments() {
                     console.log("Comment:", comment.RowKey);
                     const commentText = $('<span></span>').html(`${comment.Content}  <b>Published by:</b> ${comment.Publisher}`);
                     const voteContainer = $('<div></div>').addClass('vote-container');
-                    const upvoteButton = $('<button></button>').addClass('upvote-button').text('👍').click(function () {
-                        // Implement upvote functionality here
-                    });
-                    const downvoteButton = $('<button></button>').addClass('downvote-button').text('👎').click(function () {
-                        // Implement downvote functionality here
+                    const upvoteButton = $('<button></button>')
+                        .addClass('upvote-button')
+                        .text('⬆️').click(function () {
+                            handleCommentUpvote(comment.RowKey);
+                        });
+                    const downvoteButton = $('<button></button>')
+                        .addClass('downvote-button')
+                        .text('⬇️').click(function () {
+                        handleCommentDownvote(comment.RowKey);
                     });
                     const upvoteCount = $('<span class="upvote-count"></span>').addClass('upvote-count').text(` ${comment.Upvote}`);
                     const downvoteCount = $('<span class="downvote-count"></span>').addClass('downvote-count').text(` ${comment.Downvote}`);
@@ -111,6 +113,74 @@ function loadComments() {
         }
     });
 }
+
+
+function handleCommentUpvote(commentId) {
+    // Implement the logic for handling upvote for a comment
+    console.log('Upvoted comment with ID:', commentId);
+    sendUpvote(commentId);
+}
+
+function handleCommentDownvote(commentId) {
+    // Implement the logic for handling downvote for a comment
+    console.log('Downvoted comment with ID:', commentId);
+    sendDownvote(commentId)
+}
+
+function sendUpvote(rowKey) {
+    var token = localStorage.getItem('token'); // Retrieve the token from localStorage
+
+    $.ajax({
+        url: '/Theme/UpvoteComment', // Replace with your controller/action
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({
+            token: token,
+            rowKey: rowKey
+        }),
+        success: function (response) {
+            console.log('Success:', response);
+            if (response.user) {
+                loadComments();
+            } else {
+                window.location.href = '../Authentication/Login';
+            }
+
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', status, error);
+        }
+    });
+}
+
+function sendDownvote(rowKey) {
+    var token = localStorage.getItem('token'); // Retrieve the token from localStorage
+
+    $.ajax({
+        url: '/Theme/DownvoteComment', // Replace with your controller/action
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        data: JSON.stringify({
+            token: token,
+            rowKey: rowKey
+        }),
+        success: function (response) {
+            console.log('Success:', response);
+            if (response.user) {
+                loadComments();
+            } else {
+                console.log('Not logged in:', response);
+                window.location.href = '/Authentication/Login';
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Error:', status, error);
+        }
+    });
+}
+
 
 function deleteComment(commentId) {
     const token = localStorage.getItem('token');

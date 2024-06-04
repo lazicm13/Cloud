@@ -20,6 +20,7 @@ namespace RedditService_WebRole.Controllers
         CommentDataRepository commentRepo = new CommentDataRepository();
         UserDataRepository userRepo = new UserDataRepository();
         SubscriptionRepository subRepo = new SubscriptionRepository();
+        VotesDataRepository vote_repo = new VotesDataRepository();
         public int counter = 0;
 
         // GET: Theme
@@ -69,11 +70,11 @@ namespace RedditService_WebRole.Controllers
                     CloudQueue queue = QueueHelper.GetQueueReference("vezba");
                     queue.AddMessage(new CloudQueueMessage(topic.RowKey), null, TimeSpan.FromMilliseconds(30));
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Debug.WriteLine(e.Message + e.StackTrace);
                 }
-                
+
                 return Json(new { success = true, message = "Topic is successfully saved" });
             }
             else
@@ -126,13 +127,13 @@ namespace RedditService_WebRole.Controllers
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.WriteLine(e.Message + "\n" + e.StackTrace);
                 return Json(new { success = false, message = "Post deleting failed" }, JsonRequestBehavior.AllowGet);
             }
 
-            
+
 
             return Json(new { success = false, message = "Post deleting failed" }, JsonRequestBehavior.AllowGet);
         }
@@ -189,7 +190,7 @@ namespace RedditService_WebRole.Controllers
                     Upvote = 0,
                     Downvote = 0,
                 };
-               
+
                 if (commentRepo.Exists(id))
                 {
                     counter++;
@@ -221,8 +222,8 @@ namespace RedditService_WebRole.Controllers
                 var theme = repo.RetrieveAllThemes().FirstOrDefault(t => t.RowKey == id);
                 string email = userRepo.RetrieveAllUsers().FirstOrDefault(u => u.Ime == username)?.Email;
                 var comments = commentRepo.RetrieveAllComments().Where(c => c.Publisher == email).ToList();
-                List<Comment> newListComments = new List<Comment>(); 
-                foreach(Comment c in comments)
+                List<Comment> newListComments = new List<Comment>();
+                foreach (Comment c in comments)
                 {
                     if (c.ThemeOwner == id)
                     {
@@ -383,5 +384,110 @@ namespace RedditService_WebRole.Controllers
             }
             return Json(new { success = true });
         }
+
+        [HttpPost]
+        public ActionResult UpvoteComment(string token, string rowKey)
+        {
+            string username = tokenService.GetUsernameFromToken(token);
+            User user = userRepo.RetrieveAllUsers().FirstOrDefault(s => s.Ime == username);
+
+            if (user != null)
+            {
+                Comment comment = commentRepo.RetrieveAllComments().FirstOrDefault(s => s.RowKey == rowKey);
+                string voteId = user.RowKey + comment.RowKey;
+                if (vote_repo.Exists(voteId))
+                {
+                    Votes newVote = vote_repo.RetrieveAllVotes().FirstOrDefault(s => s.RowKey == voteId);
+                    if (newVote.VoteType == "upvote")
+                    {
+                        comment.Upvote -= 1;
+                        commentRepo.UpdateComment(comment);
+                        vote_repo.DeleteVote(newVote.RowKey);
+                        return Json(new { success = true, change = false, newValue = false, user = true, message = "Upvote count and token received successfully." });
+                    }
+                    else
+                    {
+                        newVote.VoteType = "upvote";
+                        comment.Downvote -= 1;
+                        comment.Upvote += 1;
+                        commentRepo.UpdateComment(comment);
+                        vote_repo.UpdateVote(newVote);
+                        return Json(new { success = true, change = true, newValue = true, user = true, message = "Upvote count and token received successfully." });
+                    }
+                }
+                else
+                {
+                    Votes vote = new Votes(voteId)
+                    {
+                        UserId = user.RowKey,
+                        ThemeId = comment.RowKey, // mjesto za commentId u tabeli ali tamo je samo za teme
+                        VoteType = "upvote"
+                    };
+                    comment.Upvote++;
+                    commentRepo.UpdateComment(comment);
+                    vote_repo.AddVote(vote);
+                    // Votes vote = new Votes(user.RowKey, topic.RowKey, voteId, "upvote");
+                }
+
+
+
+                return Json(new { success = true, change = true, newValue = false, user = true, message = "Upvote count and token received successfully." });
+            }
+            return Json(new { success = true, change = true, newValue = false, user = false, message = "Upvote count and token received successfully." });
+        }
+
+        [HttpPost]
+        public ActionResult DownvoteComment(string token, string rowKey)
+        {
+            string username = tokenService.GetUsernameFromToken(token);
+            User user = userRepo.RetrieveAllUsers().FirstOrDefault(s => s.Ime == username);
+            if (user != null)
+            {
+                Comment comment = commentRepo.RetrieveAllComments().FirstOrDefault(s => s.RowKey == rowKey);
+                string voteId = user.RowKey + comment.RowKey;
+                if (vote_repo.Exists(voteId))
+                {
+                    Votes newVote = vote_repo.RetrieveAllVotes().FirstOrDefault(s => s.RowKey == voteId);
+                    if (newVote.VoteType == "downvote")
+                    {
+                        comment.Downvote -= 1;
+                        commentRepo.UpdateComment(comment);
+                        vote_repo.DeleteVote(newVote.RowKey);
+                        return Json(new { success = true, change = false, newValue = false, user = true, message = "Upvote count and token received successfully." });
+
+                    }
+                    else
+                    {
+                        newVote.VoteType = "downvote";
+                        comment.Downvote += 1;
+                        comment.Upvote -= 1;
+                        commentRepo.UpdateComment(comment);
+                        vote_repo.UpdateVote(newVote);
+                        return Json(new { success = true, change = true, newValue = true, user = true, message = "Upvote count and token received successfully." });
+                    }
+                }
+                else
+                {
+                    Votes vote = new Votes(voteId)
+                    {
+                        UserId = user.RowKey,
+                        ThemeId = comment.RowKey,
+                        VoteType = "downvote"
+                    };
+                    comment.Downvote++;
+                    commentRepo.UpdateComment(comment);
+                    vote_repo.AddVote(vote);
+
+                }
+
+
+
+                return Json(new { success = true, change = true, newValue = false, user = true, message = "Upvote count and token received successfully." });
+            }
+            return Json(new { success = true, change = true, newValue = false, user = false, message = "Upvote count and token received successfully." });
+        }
+
+
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿function sendDataToBackend() {
     window.location.href = 'UserProfile';
 }
+
 function updateUI() {
     if (localStorage.getItem('token') == null) {
         $('.auth-container').html('<button onclick="loginNavigate()">Login</button>');
@@ -8,7 +9,6 @@ function updateUI() {
         $('.auth-container').html('<button onclick="sendDataToBackend()">Profile</button> <button onclick="logout()">Logout</button>');
     }
 }
-
 
 function loginNavigate() {
     window.location.href = '../Authentication/login';
@@ -52,7 +52,6 @@ function handleUpvote(themeId) {
     // $('.upvote-count').text(theme.Upvote + '  '); // Update the upvote count in the UI
     sendUpvote(themeId); // Send the updated count and token to the backend
 }
-
 //Upvote funkcija
 function sendUpvote(rowKey) {
     var token = localStorage.getItem('token'); // Retrieve the token from localStorage
@@ -86,7 +85,6 @@ function handleDownvote(themeId) {
     // $('.upvote-count').text(theme.Upvote + '  '); // Update the upvote count in the UI
     sendDownvote(themeId); // Send the updated count and token to the backend
 }
-
 //Downvote funkcija
 function sendDownvote(rowKey) {
     var token = localStorage.getItem('token'); // Retrieve the token from localStorage
@@ -195,7 +193,6 @@ function getAllSubscriptions(callback) {
         }
     });
 }
-
 
 function searchThemes() {
     var searchText = document.getElementById('searchInput').value.toLowerCase();
