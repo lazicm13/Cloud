@@ -203,6 +203,10 @@ namespace RedditService_WebRole.Controllers
                 }
                 topic.Comments.Add(newComment);
                 repo.UpdateTopic(topic);
+
+                CloudQueue queue = QueueHelper.GetQueueReference("notification");
+                queue.AddMessage(new CloudQueueMessage(themeId + "/" + content), null, TimeSpan.FromMilliseconds(30));
+
                 return Json(new { success = true });
             }
             catch (Exception e)

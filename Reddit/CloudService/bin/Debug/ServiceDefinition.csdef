@@ -26,10 +26,10 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\rcf\Debug\RedditService_WebRoleContent\" />
+        <SourceDirectory path="C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\rcf\Debug\RedditService_WebRoleContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\ecf\RedditService_WebRoleContent\" />
+        <SourceDirectory path="C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\ecf\RedditService_WebRoleContent\" />
       </Content>
     </Contents>
     <Imports>
@@ -39,13 +39,14 @@
   <WorkerRole name="NotificationService" vmsize="Standard_D1_v2">
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+      <Setting name="DataConnectionString" />
     </ConfigurationSettings>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\rcf\Debug\NotificationServiceContent\" />
+        <SourceDirectory path="C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\rcf\Debug\NotificationServiceContent\" />
       </Content>
       <Content destination=".\">
-        <SourceDirectory path="C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\ecf\NotificationServiceContent\" />
+        <SourceDirectory path="C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\ecf\NotificationServiceContent\" />
       </Content>
     </Contents>
     <Imports>

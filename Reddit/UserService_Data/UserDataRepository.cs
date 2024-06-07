@@ -22,7 +22,8 @@ namespace UserService_Data
         {
             _storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
             CloudTableClient tableClient = new CloudTableClient(new Uri(_storageAccount.TableEndpoint.AbsoluteUri), _storageAccount.Credentials);
-            _table = tableClient.GetTableReference("UserTable"); _table.CreateIfNotExists();
+            _table = tableClient.GetTableReference("UserTable");
+            _table.CreateIfNotExists();
         }
 
         public bool Exists(string UserNo)

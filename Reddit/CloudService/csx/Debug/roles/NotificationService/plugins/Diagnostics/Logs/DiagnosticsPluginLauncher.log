@@ -1,19 +1,19 @@
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:29 PM] At least one other instance of the launcher is running. Will wait until they all finish
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Service running in Emulator Mode, will not wait/kill other instances of the launcher
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Emulator config file set to C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] DiagnosticsStoreRootPath set to: C:\Users\HP EliteBook 840-G2\AppData\Local\dftmp\Resources\57b044f0-e99b-4c60-9d8d-4ba715f98155
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Loading config file: C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Config file to read: C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Checking VM Type
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Emulator config file set to C:\Users\HP EliteBook 840-G2\Desktop\Projekat\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Extension set to Emulator Mode
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Reading XML configuration file
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Bypassing private config decryption
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Stopping the running plugin, if any
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] No DiagnosticsPlugin is running.
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:30 PM] Killing any DiagnosticsPlugin that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:31 PM] Killing any MonAgentHost that might remain.
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:31 PM] Diagnostics plugin stopped successfully
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:11:31 PM] Resetting DiagnosticPlugin
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:12:45 PM] DiagnosticsPlugin launched successfully with new configuration
-DiagnosticsPluginLauncher.exe Information: 0 : [6/3/2024 2:12:45 PM] DiagnosticPlugin exited with code 0
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Emulator config file set to C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] DiagnosticsStoreRootPath set to: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Loading config file: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Config file to read: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Checking VM Type
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Emulator config file set to C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Extension set to Emulator Mode
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:24 PM] Stopping the running plugin, if any
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:25 PM] Found a MonAgentHost.exe. WadArguments: "C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\plugins\Diagnostics\Monitor\x64\MonAgentHost.exe" -LocalPath "C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105"  -ConfigFile "C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-3cc57e622b4f4430bf5cb9abb74e6631  -TotalShutDownEvent WADDM-TotalShutDown-3cc57e622b4f4430bf5cb9abb74e6631 -InitializedEvent WADM-StartUp-3cc57e622b4f4430bf5cb9abb74e6631 -parent 7748 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000.
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:25 PM] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:25 PM] Loading config file: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:25 PM] Config file to read: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\NotificationService\approot\diagnostics.wadcfgx
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:25 PM] Reading XML configuration file
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:25 PM] Bypassing private config decryption
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:26 PM] Found a running wad2 MA not sharing the same local directory
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:26 PM] Killing any DiagnosticsPlugin that might remain.
+DiagnosticsPluginLauncher.exe Information: 0 : [6/7/2024 1:54:26 PM] Found a DiagnosticsPlugin.exe. WadArguments: "C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\plugins\Diagnostics\DiagnosticsPlugin.exe" DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5.
