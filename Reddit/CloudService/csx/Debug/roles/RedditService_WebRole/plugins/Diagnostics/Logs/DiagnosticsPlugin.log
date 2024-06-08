@@ -1,17 +1,17 @@
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:27 PM] Starting DiagnosticPlugin.exe DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:27 PM] Successfully saved IIS Directory state
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Starting DiagnosticsPlugin
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Emulator config file set to C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] DiagnosticsStoreRootPath set to: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Loading config file: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Config file to read: C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Checking VM Type
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Emulator config file set to C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Extension set to Emulator Mode
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Reading XML configuration file
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Bypassing private config decryption
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] WadCfg is provided in initial configuration. Using that to initialize Diagnostics.
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:06 AM] Starting DiagnosticPlugin.exe DiagnosticPlugin-ShutdownEvent DiagnosticPlugin-TotalShutdownEvent -wadVer1v5
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Successfully saved IIS Directory state
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Starting DiagnosticsPlugin
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Emulator config file set to C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] DiagnosticsStoreRootPath set to: C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Loading config file: C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Config file to read: C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Checking VM Type
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Emulator config file set to C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\diagnostics.wadcfgx
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Extension set to Emulator Mode
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Reading XML configuration file
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Bypassing private config decryption
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] WadCfg is provided in initial configuration. Using that to initialize Diagnostics.
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
   <WadCfg>
     <DiagnosticMonitorConfiguration overallQuotaInMB="4096">
       <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error" />
@@ -43,32 +43,36 @@ DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] <PublicConfig xmlns
   </WadCfg>
   <StorageAccount>devstoreaccount1</StorageAccount>
 </PublicConfig>
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Private setting is loaded
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Is config json/xml loaded
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:28 PM] Checking if configuration needs to be fetched from the storage account and doing so if needed.
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:29 PM] Successfully created checkpoint file C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105\Configuration\Checkpoint.txt
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:29 PM] Will use local resource directory C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:29 PM] Will use endpoint https://core.windows.net for storage.
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:30 PM] Expanding path %SystemDrive%\inetpub\logs\LogFiles to C:\inetpub\logs\LogFiles
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:30 PM] Expanding path %SystemDrive%\inetpub\logs\FailedReqLogFiles to C:\inetpub\logs\FailedReqLogFiles
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:30 PM] Created IIS log watch item: "C:\inetpub\logs\LogFiles"
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:30 PM] Created IIS failed requests watch item: "C:\inetpub\logs\FailedReqLogFiles"
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:30 PM] Running in emulator mode, crash dumps not enabled
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:30 PM] Checking to see if Application Insights extension needs to be configured.
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:52:31 PM] In emulator mode and using devstore updating XStoreAccount info, command line args: -LocalPath "C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105"  -ConfigFile "C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-3cc57e622b4f4430bf5cb9abb74e6631  -TotalShutDownEvent WADDM-TotalShutDown-3cc57e622b4f4430bf5cb9abb74e6631 -InitializedEvent WADM-StartUp-3cc57e622b4f4430bf5cb9abb74e6631 -parent 7748 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000
-DiagnosticsPlugin.exe Error: 0 : [6/7/2024 1:53:01 PM] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Private setting is loaded
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Is config json/xml loaded
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:07 AM] Checking if configuration needs to be fetched from the storage account and doing so if needed.
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:08 AM] Successfully created checkpoint file C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105\Configuration\Checkpoint.txt
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:08 AM] Will use local resource directory C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:08 AM] Will use endpoint https://core.windows.net for storage.
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:10 AM] Expanding path %SystemDrive%\inetpub\logs\LogFiles to C:\inetpub\logs\LogFiles
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:10 AM] Expanding path %SystemDrive%\inetpub\logs\FailedReqLogFiles to C:\inetpub\logs\FailedReqLogFiles
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:10 AM] Created IIS log watch item: "C:\inetpub\logs\LogFiles"
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:10 AM] Created IIS failed requests watch item: "C:\inetpub\logs\FailedReqLogFiles"
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:10 AM] Running in emulator mode, crash dumps not enabled
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:10 AM] Checking to see if Application Insights extension needs to be configured.
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:45:11 AM] In emulator mode and using devstore updating XStoreAccount info, command line args: -LocalPath "C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105"  -ConfigFile "C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\csx\Debug\roles\RedditService_WebRole\approot\WAD0105\Configuration\MaConfig.xml" -ShutDownEvent WADDM-ShutDown-199eca5140e74f84b9753805dfefabd9  -TotalShutDownEvent WADDM-TotalShutDown-199eca5140e74f84b9753805dfefabd9 -InitializedEvent WADM-StartUp-199eca5140e74f84b9753805dfefabd9 -parent 14996 -events -wadVer1v5 -UseProxyServer -XStoreAccounts WadAccount#true#devstoreaccount1#Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==#http://127.0.0.1:10002#http://127.0.0.1:10001#http://127.0.0.1:10000
+DiagnosticsPlugin.exe Error: 0 : [6/8/2024 11:45:41 AM] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
    at Microsoft.Cis.Monitoring.Query.QueryLocalTable..ctor(String TableName, String TablePath)
    at ApplicationInsightsExtension.MATableReader.ReadTableRecords(String tableName, String tablePath, DateTime startTime, DateTime endTime)
    at Microsoft.Azure.Plugins.Diagnostics.dll.MAStatusWriter.UpdateStatusReport(Object sender, ElapsedEventArgs e)
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:53:31 PM] MonAgentHost.exe started
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:53:31 PM] DiagnoticsPlugin started.
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:53:31 PM] DiagnoticsPlugin now waiting on events "DiagnosticPlugin-ShutdownEvent", "DiagnosticPlugin-TotalShutdownEvent" or "DiagnosticPlugin-RestartEvent".
-DiagnosticsPlugin.exe Error: 0 : [6/7/2024 1:53:31 PM] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:46:11 AM] MonAgentHost.exe started
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:46:11 AM] DiagnoticsPlugin started.
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:46:11 AM] DiagnoticsPlugin now waiting on events "DiagnosticPlugin-ShutdownEvent", "DiagnosticPlugin-TotalShutdownEvent" or "DiagnosticPlugin-RestartEvent".
+DiagnosticsPlugin.exe Error: 0 : [6/8/2024 11:46:11 AM] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
    at Microsoft.Cis.Monitoring.Query.QueryLocalTable..ctor(String TableName, String TablePath)
    at ApplicationInsightsExtension.MATableReader.ReadTableRecords(String tableName, String tablePath, DateTime startTime, DateTime endTime)
    at Microsoft.Azure.Plugins.Diagnostics.dll.MAStatusWriter.UpdateStatusReport(Object sender, ElapsedEventArgs e)
-DiagnosticsPlugin.exe Error: 0 : [6/7/2024 1:54:01 PM] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
+DiagnosticsPlugin.exe Error: 0 : [6/8/2024 11:46:41 AM] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
    at Microsoft.Cis.Monitoring.Query.QueryLocalTable..ctor(String TableName, String TablePath)
    at ApplicationInsightsExtension.MATableReader.ReadTableRecords(String tableName, String tablePath, DateTime startTime, DateTime endTime)
    at Microsoft.Azure.Plugins.Diagnostics.dll.MAStatusWriter.UpdateStatusReport(Object sender, ElapsedEventArgs e)
-DiagnosticsPlugin.exe Information: 0 : [6/7/2024 1:54:25 PM] Total shutdown event signaled.
+DiagnosticsPlugin.exe Information: 0 : [6/8/2024 11:47:09 AM] Total shutdown event signaled.
+DiagnosticsPlugin.exe Error: 0 : [6/8/2024 11:47:12 AM] Microsoft.Cis.Monitoring.Query.QueryException: ErrorFail
+   at Microsoft.Cis.Monitoring.Query.QueryLocalTable..ctor(String TableName, String TablePath)
+   at ApplicationInsightsExtension.MATableReader.ReadTableRecords(String tableName, String tablePath, DateTime startTime, DateTime endTime)
+   at Microsoft.Azure.Plugins.Diagnostics.dll.MAStatusWriter.UpdateStatusReport(Object sender, ElapsedEventArgs e)

@@ -29,7 +29,10 @@ $(document).on('click', '.subscribeButton', function () {
     var $themeContainer = $(this).closest('.theme-container');
     var themeId = $themeContainer.attr('data-rowKey');
     var token = localStorage.getItem('token');
-
+    if (token == null) {
+        window.location.href = '../Authentication/Login';
+       
+    }
     $.ajax({
         url: '/Theme/AddSubscriber',
         type: 'POST',

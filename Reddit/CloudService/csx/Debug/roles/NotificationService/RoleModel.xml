@@ -22,7 +22,7 @@
     <Property name="Configuration" value="Debug" />
     <Property name="Platform" value="AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5.1" />
-    <Property name="OutputDir" value="C:\Users\User\OneDrive\Desktop\cloud najnoviji\Cloud\Reddit\CloudService\obj\Debug\NotificationService\" />
+    <Property name="OutputDir" value="C:\Users\User\OneDrive\Desktop\kopija\projekat\Cloud\Reddit\CloudService\obj\Debug\NotificationService\" />
     <Property name="EntryPoint" value="NotificationService.dll" />
     <Property name="SourceDir" value="" />
     <Property name="SitePhysicalPath" value="" />

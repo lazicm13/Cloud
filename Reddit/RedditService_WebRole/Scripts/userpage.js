@@ -17,7 +17,8 @@ function loginNavigate() {
 function logout() {
     localStorage.removeItem('token');
     updateUI();
-    window.location.href = '/Authentication/Login';
+    //window.location.href = '/Authentication/Login';
+    loadThemes();
 }
 
 $(document).ready(function () {
